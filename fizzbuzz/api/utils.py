@@ -13,7 +13,7 @@ def get_fizzbuzz(int1: int, int2: int, limit: int, str1: str, str2: str) -> List
         List of numbers from 1 to limit, where some of them were replaced by str1, str2 or str1str2
     """
     result = []
-    for i in range(1, limit):
+    for i in range(1, limit + 1):
         if i % int1 == 0 and i % int2 == 0:
             result.append(str1 + str2)
         elif i % int1 == 0:

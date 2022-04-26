@@ -45,11 +45,14 @@ def fizzbuzz() -> List[str]:
     str1 = data_request["str1"]
     str2 = data_request["str2"]
 
-    if not all(isinstance(i, int) for i in [int1, int2, limit]) or not all(isinstance(i, str) for i in [str1, str2]):
+    # Check the type validity of the parameters
+    if (not all(isinstance(i, int) for i in [int1, int2, limit])
+       or not all(isinstance(i, str) for i in [str1, str2])):
         return "Invalid type of parameters for fizz buzz", 400
 
     fizzbuzz = get_fizzbuzz(int1, int2, limit, str1, str2)
-    fizzbuzz_instance = get_instance(FizzBuzz, int1=int1, int2=int2, limit=limit, str1=str1, str2=str2)
+    fizzbuzz_instance = get_instance(FizzBuzz, int1=int1, int2=int2, limit=limit,
+                                     str1=str1, str2=str2)
 
     if not fizzbuzz_instance:
         add_instance(FizzBuzz, int1=int1, int2=int2, limit=limit, str1=str1, str2=str2)
