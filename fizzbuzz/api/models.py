@@ -1,6 +1,4 @@
-import flask_sqlalchemy
-
-db = flask_sqlalchemy.SQLAlchemy()
+from database import db
 
 
 class FizzBuzz(db.Model):
