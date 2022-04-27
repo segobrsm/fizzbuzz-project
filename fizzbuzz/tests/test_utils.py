@@ -12,9 +12,8 @@ def test_fizzbuzz_nominal():
 
 
 def test_fizzbuzz_no_multiple():
-    fizzbuzz = get_fizzbuzz(23, 45, 30, "test1", "test2")
+    fizzbuzz = get_fizzbuzz(23, 45, 20, "test1", "test2")
 
-    expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19,
-                20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30]
+    expected = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 
     assert fizzbuzz == expected
