@@ -11,8 +11,8 @@ on:
     branches: [ main, develop ]
   workflow_dispatch:
 defaults:
-      run: 
-        working-directory: fizzbuzz
+  run: 
+    working-directory: fizzbuzz
 jobs:
   tests:
     runs-on: ubuntu-latest
