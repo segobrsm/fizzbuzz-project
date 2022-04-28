@@ -1,0 +1,126 @@
+swagger: "2.0"
+info:
+  description: "Swagger documentation for Fizzbuzz web server"
+  version: "1.0.0"
+  title: "Swagger Fizzbuzz"
+tags:
+- name: "Fizzbuzz"
+  description: "Fizzbuzz some words"
+- name: "Statistics"
+  description: "Information on the use of fizzbuzz"
+schemes:
+- "https"
+- "http"
+paths:
+  /fizzbuzz:
+    get:
+      tags:
+      - "Fizzbuzz"
+      summary: "Compute fizzbuzz"
+      description: ""
+      operationId: "fizzbuzz"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+        - in: body
+          name: fizzbuzz
+          schema:
+            type: object
+            required:
+              - int1
+              - int2
+              - limit
+              - str1
+              - str2
+            properties:
+              int1:
+                type: integer
+                default: 2
+              int2:
+                type: integer
+                default: 8
+              limit:
+                type: integer
+                default: 30
+              str1:
+                type: string
+                default: "hello"
+              str2:
+                type: string
+                default: "hola"
+          required: true
+      responses:
+        "200":
+          description: "List of numbers from 1 to limit, where some of them were replaced by str1, str2 or str1str2"
+          schema:
+            type: object
+            properties:
+              result:
+                type: array
+                default: ["1", "2", "test1", "4", "5", "test1", "7", "8", "test1", "10", "11", "test1", "13", "14", "test1test2"]
+        "400":
+          description: "There are two possible situations in this case"
+          schema:
+            type: string
+            default: "Missing parameters for fizz buzz or Invalid type of parameters for fizz buzz"
+  /statistics:
+    get:
+      tags:
+      - "Statistics"
+      summary: "The most frequent request"
+      description: ""
+      operationId: "get_stat_request"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+          schema:
+            type: object
+            properties:
+              int1:
+                type: integer
+                default: 3
+              int2:
+                type: integer
+                default: 15
+              limit:
+                type: integer
+                default: 20
+              str1:
+                type: string
+                default: "test2"
+              str2:
+                type: string
+                default: "test1"
+              nb_hit:
+                type: integer
+                default: 3
+        "404":
+          description: ""
+          schema:
+            type: string
+            default: "No fizz buzz registred"
+definitions:
+  FizzBuzz:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+      int1:
+        type: "integer"
+      int2:
+        type: "integer"
+      limit:
+        type: "integer"
+      str1:
+        type: "string"
+      str2:
+        type: "string"
+      nb_hit:
+        type: "integer"
+        default: 1
+    xml:
+      name: "FizzBuzz"

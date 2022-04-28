@@ -1,5 +1,5 @@
 import json
-from typing import List
+from typing import Dict, List
 
 from flask import Blueprint, request
 
@@ -11,13 +11,13 @@ bp = Blueprint("app", __name__)
 
 
 @bp.route("/fizzbuzz", methods=['GET'])
-def fizzbuzz() -> List[str]:
+def fizzbuzz() -> Dict[str, List[str]]:
     """Compute fizzbuzz with the given request parameters, then increment number
     of hits for the request or create instance in database if not created yet
 
     Returns
     -------
-    List[str]
+    Dict[str, List[str]]
         List of numbers from 1 to limit, where some of them were replaced by str1, str2 or str1str2
     """
     data_request = request.get_json()
@@ -47,11 +47,18 @@ def fizzbuzz() -> List[str]:
         fizzbuzz_instance.nb_hit += 1
         commit_changes()
 
-    return json.dumps(fizzbuzz), 200
+    return json.dumps({"result": fizzbuzz}), 200
 
 
 @bp.route("/statistics", methods=['GET'])
-def get_stat_request():
+def get_stat_request() -> Dict[str, str]:
+    """Find the fizzbuzz with the highest nb_hit in the database
+
+    Returns
+    -------
+    Dict[str, str]
+        The parameters of the most requested fizzbuzz
+    """
     most_requested = FizzBuzz.query.order_by(FizzBuzz.nb_hit.desc()).first()
 
     if not most_requested:
