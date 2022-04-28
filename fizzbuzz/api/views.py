@@ -1,9 +1,5 @@
 import json
-<<<<<<< HEAD
 from typing import Dict, List
-=======
-from typing import List
->>>>>>> Begin tests
 
 from flask import Blueprint, request
 
