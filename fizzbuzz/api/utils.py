@@ -23,4 +23,4 @@ def get_fizzbuzz(int1: int, int2: int, limit: int, str1: str, str2: str) -> List
         else:
             result.append(i)
 
-    return result
+    return [str(i) for i in result]
