@@ -13,7 +13,6 @@ services:
       - ./fizzbuzz/api:/usr/src/app/
     env_file:
       - ./.env.dev
-    restart: always
 
   db:
     image: postgres:13-alpine
