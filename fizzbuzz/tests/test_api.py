@@ -29,7 +29,7 @@ class TestApi(TestCase):
         body = {
             "int1": 3,
             "int2": 15,
-            "limit": 30,
+            "limit": 20,
             "str1": "test1",
             "str2": "test2"
         }
@@ -37,9 +37,10 @@ class TestApi(TestCase):
         response = self.client.get("/fizzbuzz", headers=headers, data=json.dumps(body))
 
         data = json.loads(response.get_data())
-        expected = [1, 2, "test1", 4, 5, "test1", 7, 8, "test1", 10, 11, "test1", 13,
-                    14, "test1test2", 16, 17, "test1", 19, 20, "test1", 22, 23,
-                    "test1", 25, 26, "test1", 28, 29, "test1test2"]
+
+        expected = {'result': ['1', '2', 'test1', '4', '5', 'test1', '7', '8', 'test1', '10',
+                               '11', 'test1', '13', '14', 'test1test2', '16', '17', 'test1',
+                               '19', '20']}
 
         assert FizzBuzz.query.count() == 3
         assert data == expected
@@ -57,8 +58,9 @@ class TestApi(TestCase):
         response = self.client.get("/fizzbuzz", headers=headers, data=json.dumps(body))
         data = json.loads(response.get_data())
 
-        expected = [1, 2, 3, 4, 'thanks', 6, 7, 8, 9, 'thanksgracias', 11, 12, 13,
-                    14, 'thanks', 16, 17, 18, 19, 'thanksgracias']
+        expected = {'result': ['1', '2', '3', '4', 'thanks', '6', '7', '8', '9', 'thanksgracias',
+                               '11', '12', '13', '14', 'thanks', '16', '17', '18', '19',
+                               'thanksgracias']}
 
         fizzbuzz = FizzBuzz.query.filter_by(int1=5, int2=10, limit=20, str1="thanks",
                                             str2="gracias").first()

@@ -1,9 +1,10 @@
 import os
 
 from flask import Flask
+from flask_swagger_ui import get_swaggerui_blueprint
 
-from views import bp as app_blueprint
 from database import db
+from views import bp as app_blueprint
 
 
 def create_app():
@@ -14,6 +15,14 @@ def create_app():
     db.init_app(flask_app)
     db.create_all()
 
+    swaggerui_blueprint = get_swaggerui_blueprint(
+        '/swagger',
+        '/static/swagger.yml',
+        config={
+            'app_name': "Fizzbuzz web server"
+        }
+    )
+    flask_app.register_blueprint(swaggerui_blueprint, url_prefix='/swagger')
     flask_app.register_blueprint(app_blueprint)
 
     return flask_app
