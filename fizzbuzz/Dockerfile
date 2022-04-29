@@ -13,4 +13,7 @@ RUN pip install -r requirements.txt
 
 COPY . /usr/src/app/
 
-CMD ["python", "app.py"]
+RUN cat manage.py
+RUN ls
+
+CMD ["python", "manage.py"]

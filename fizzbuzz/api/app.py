@@ -3,8 +3,8 @@ import os
 from flask import Flask
 from flask_swagger_ui import get_swaggerui_blueprint
 
-from database import db
-from views import bp as app_blueprint
+from api.database import db
+from api.views import bp as app_blueprint
 
 
 def create_app():
@@ -28,8 +28,3 @@ def create_app():
     return flask_app
 
 
-app = create_app()
-
-
-if __name__ == "__main__":
-    app.run(host="0.0.0.0", debug=True)

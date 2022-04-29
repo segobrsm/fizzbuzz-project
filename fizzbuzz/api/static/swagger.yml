@@ -59,6 +59,8 @@ paths:
             properties:
               result:
                 type: array
+                items:
+                  type: string
                 default: ["1", "2", "test1", "4", "5", "test1", "7", "8", "test1", "10", "11", "test1", "13", "14", "test1test2"]
         "400":
           description: "There are two possible situations in this case"

@@ -1,4 +1,4 @@
-from api.utils import get_fizzbuzz
+from utils import get_fizzbuzz
 
 
 def test_fizzbuzz_nominal():
