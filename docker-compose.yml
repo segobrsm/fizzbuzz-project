@@ -26,7 +26,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
-# Remove volumes because can't be mounted with Ubuntu (know issue), otherwise 
+# Comment volumes because can't be mounted with Ubuntu (know issue), otherwise 
 # use it to get persisting data
 # volumes:
 #   postgres-data:
