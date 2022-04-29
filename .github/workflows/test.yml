@@ -10,9 +10,6 @@ on:
   pull_request:
     branches: [ main, develop ]
   workflow_dispatch:
-defaults:
-  run: 
-    working-directory: ./fizzbuzz
 jobs:
   tests:
     runs-on: ubuntu-latest
@@ -23,10 +20,13 @@ jobs:
       with:
         python-version: 3.8
     - name: Install dependencies
+      working-directory: fizzbuzz
       run: |
-        pwd ls -al
+        pwd 
+        ls -al
         python -m pip install --upgrade pip
         pip install -r requirements.txt; 
     - name: Test with pytest
+      working-directory: fizzbuzz
       run: |
         python -m pytest
