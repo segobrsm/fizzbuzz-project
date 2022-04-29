@@ -22,7 +22,7 @@ jobs:
         pwd 
         ls -al
         python -m pip install --upgrade pip
-        pip install -r requirements.txt; 
+        pip install -r fizzbuzz/requirements.txt; 
     - name: Test with pytest
       run: |
         python -m pytest
