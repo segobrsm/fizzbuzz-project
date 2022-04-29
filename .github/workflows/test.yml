@@ -1,10 +1,8 @@
-# This is a basic workflow to help you get started with Actions
 
 name: CI
 
 # Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main, develop ]
   pull_request:
@@ -20,13 +18,11 @@ jobs:
       with:
         python-version: 3.8
     - name: Install dependencies
-      working-directory: fizzbuzz
       run: |
         pwd 
         ls -al
         python -m pip install --upgrade pip
         pip install -r requirements.txt; 
     - name: Test with pytest
-      working-directory: fizzbuzz
       run: |
         python -m pytest
