@@ -1,0 +1,21 @@
+version: '3.3'
+
+services:
+  api: 
+    build: ./fizzbuzz
+    depends_on:
+      - db
+    command: gunicorn --bind 0.0.0.0:5000 manage:app
+    ports:
+      - 5000:5000
+    env_file:
+      - ./.env.prod
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - postgres-data-prod:/var/lib/postgresql/data/
+    env_file:
+      - ./.env.prod.db
+
+volumes:
+  postgres-data-prod:

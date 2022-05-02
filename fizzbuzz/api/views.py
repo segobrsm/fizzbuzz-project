@@ -3,9 +3,9 @@ from typing import Dict, List
 
 from flask import Blueprint, request
 
-from database import add_instance, commit_changes, get_instance
-from models import FizzBuzz
-from utils import get_fizzbuzz
+from api.database import add_instance, commit_changes, get_instance
+from api.models import FizzBuzz
+from api.utils import get_fizzbuzz
 
 bp = Blueprint("app", __name__)
 
