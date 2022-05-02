@@ -5,6 +5,8 @@ WORKDIR /usr/src/app
 ENV PYTHONDONTWRITEBYTECODE 1
 ENV PYTHONUNBUFFERED 1
 
+RUN apt-get update && apt-get install -y netcat
+
 EXPOSE 5000
 
 RUN pip install --upgrade pip
@@ -13,4 +15,5 @@ RUN pip install -r requirements.txt
 
 COPY . /usr/src/app/
 
-CMD ["python", "app.py"]
+RUN ["chmod", "+x", "./entrypoint.sh"]
+ENTRYPOINT ["./entrypoint.sh"]
