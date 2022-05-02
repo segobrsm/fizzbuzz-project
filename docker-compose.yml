@@ -1,0 +1,25 @@
+version: '3.3'
+
+services:
+  api:
+    build: ./fizzbuzz
+    depends_on:
+      - db
+    networks:
+      - default
+    ports:
+      - 5000:5000
+    volumes:
+      - ./fizzbuzz/api:/usr/src/app/
+    env_file:
+      - ./.env.dev
+
+  db:
+    image: postgres:13-alpine
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    ports:
+      - 5405:5432
+
+volumes:
+  postgres-data:

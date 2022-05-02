@@ -1,1 +1,1 @@
-# fizzbuzz-project
+# fizzbuzz
