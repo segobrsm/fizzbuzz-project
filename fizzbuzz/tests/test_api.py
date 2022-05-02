@@ -1,6 +1,8 @@
 
 import json
+
 from flask_testing import TestCase
+
 from api.app import create_app
 from api.database import add_instance, db
 from api.models import FizzBuzz

@@ -12,8 +12,8 @@ services:
     env_file:
       - ./.env.dev
     restart: always
-    # volumes:
-    #   - ./fizzbuzz/api:/usr/src/app/
+    volumes:
+      - ./fizzbuzz/api:/usr/src/app/
 
   db:
     image: postgres:13-alpine
@@ -26,7 +26,7 @@ services:
     volumes:
       - postgres-data:/var/lib/postgresql/data
 
-# Comment volumes because can't be mounted with Ubuntu (know issue), otherwise 
-# use it to get persisting data
-# volumes:
-#   postgres-data:
+# Possible issue : Volumes can't be mouted with Ubuntu (known issue) so comment it
+# in order to launch container
+volumes:
+  postgres-data:
