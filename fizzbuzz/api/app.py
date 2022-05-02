@@ -9,7 +9,7 @@ from api.views import bp as app_blueprint
 
 def create_app():
     flask_app = Flask(__name__)
-    flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL", "sqlite://")
+    flask_app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URLDATABASE_URLDATABASE_URLDATABASE_URLDATABASE_URL", "sqlite://")
     flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     flask_app.app_context().push()
     db.init_app(flask_app)
