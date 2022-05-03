@@ -7,7 +7,7 @@ This is a Fizzbuzz web server that expose two endpoints. After starting the appl
 |---|---|---|
 | `http://<server>:<port>/fizzbuzz/` | The fizzbuzz string list with numbers from 1 to limit, where: <br>- all multiples of int1 are replaced by str1<br>- all multiples of int2 are replaced by str2<br>- all multiples of int1 and int2 are replaced by str1str2 | `curl -X GET -H "Content-Type: application/json" -d '{"int1": 3, "int2": 15, "limit": 50, "str1": "hello", "str2":"hola"}' http://127.0.0.1:5000/fizzbuzz` |
 | `http://<server>:<port>/statistics/` | The parameters corresponding to the most used request, as well as the number of hits for this request | `curl -X GET -H "Content-Type: application/json" http://127.0.0.1:5000/statistics` |
-| `http://<server>:<port>/swagger/` | Documentation about Fizzbuzz web server | `curl -X GET -H "Content-Type: application/json" <br>http://127.0.0.1:5000/statistics` |
+| `http://<server>:<port>/swagger/` | Documentation about Fizzbuzz web server | `curl -X GET -H "Content-Type: application/json" <br>http://127.0.0.1:5000/swagger` |
 
 
 ## How to run the application
